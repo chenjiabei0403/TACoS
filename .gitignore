@@ -1,0 +1,20 @@
+# 预训练权重（约 1.65 GB，不要上传）
+pretrained/*.pth
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# 训练输出
+outputs/
+lightning_logs/
+*.ckpt
+
+# CUDA 编译产物
+*.so
+
+# 数据
+scribbles/

@@ -1,0 +1,52 @@
+# TACoS — MoS2_yan
+
+dataset: MoS2
+train_root: ../scribbles/yan/MoS2/images/train/
+train_mask_root: ../scribbles/yan/MoS2/masks/train/
+train_full_mask_root: ../scribbles/yan/MoS2/masks_full/train/  # y_B for L_Boundary
+val_root: ../scribbles/yan/MoS2/images/val/
+val_mask_root: ../scribbles/yan/MoS2/masks/val/
+save_root: ../scribbles/yan/MoS2/outputs/
+
+nclass: 2
+crop_height: 518
+crop_width: 518
+epochs: 50
+batch_size: 2
+lr: 0.000005
+lr_multi: 40.0
+
+backbone: dinov2_small
+lock_backbone: false
+ignore_index: 255  # unlabeled scribble pixels; OHEM as in §4.2
+
+# L_sup — sparse scribble supervision
+sup:
+  enable: true
+
+# L_UWSD — λ_c
+uwsd:
+  enable: true
+  weight: 5.0
+
+# L_TER — σ_aff=0.1, λ_t
+ter:
+  enable: true
+  lambda_ter: 1
+  color_sigma: 0.1
+
+# ARCL modules (parallel): L_Region and L_Boundary
+# L_Region — τ_w, τ_s, T, queries/negatives; λ_r
+region:
+  enable: true
+  weak_threshold: 0.7
+  strong_threshold: 0.97
+  temp: 0.5
+  num_queries: 256
+  num_negatives: 512
+  weight: 0.0025
+
+# L_Boundary — λ_b
+boundary:
+  enable: true
+  weight: 0.00025

@@ -1,0 +1,45 @@
+# Install PyTorch + torchvision first for your CUDA version:
+#   https://pytorch.org/get-started/locally/
+#
+# Install mmcv matching your torch/CUDA build (base.py uses imresize/imrescale):
+#   pip install -U openmim
+#   mim install mmcv
+#
+# Build the TER CUDA extension after torch is available:
+#   pip install -e model/functions/src
+
+# --- Core deep learning ---
+torch>=2.5.0
+torchvision>=0.20.0
+lightning>=2.5.0
+torchmetrics>=1.8.0
+
+# --- Data & I/O ---
+numpy>=1.24.0
+pandas>=2.0.0
+PyYAML>=6.0
+Pillow>=10.0.0
+opencv-python>=4.8.0
+mmcv>=2.0.0
+
+# --- Training logs & visualization ---
+tensorboard>=2.14.0
+tqdm>=4.65.0
+matplotlib>=3.7.0
+
+# --- Build TER CUDA ops (model/functions/src/setup.py) ---
+setuptools>=65.0.0
+
+# --- Optional: faster DINOv2 attention (falls back if missing) ---
+xformers>=0.0.28; platform_system != "Windows"
+
+# Import audit (stdlib omitted):
+#   yaml              -> PyYAML
+#   PIL               -> Pillow
+#   cv2               -> opencv-python
+#   lightning         -> lightning
+#   torchmetrics      -> torchmetrics
+#   matplotlib.pyplot -> matplotlib
+#   mmcv              -> mmcv
+#   xformers.ops      -> xformers (optional)
+#   tree_filter_cuda  -> built locally via pip install -e model/functions/src
