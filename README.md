@@ -6,7 +6,7 @@ This repository provides the official PyTorch Lightning implementation described
 
 > **TACoS: Weakly Supervised Learning of Two-Dimensional Materials from Scribble Annotations to Precise Segmentation**  
 > Jiabei Chen, Liping Zhang, Jiang-Bin Wu, Zhongming Wei, Enhao Ning, Su Yan, Weijun Li, Ping-Heng Tan, Xin Ning  
-> arXiv, 2026
+> [arXiv:2607.07169](https://arxiv.org/abs/2607.07169), 2026
 
 Using less than **0.6%** labeled pixels (scribble supervision), TACoS reaches **>96%** of fully supervised performance on graphene and MoS₂, with strong boundary stability under low-contrast edges and complex backgrounds.
 
@@ -226,8 +226,9 @@ If you use this code or method, please cite:
 @article{chen2026tacos,
   title   = {{TACoS}: Weakly Supervised Learning of Two-Dimensional Materials from Scribble Annotations to Precise Segmentation},
   author  = {Chen, Jiabei and Zhang, Liping and Wu, Jiang-Bin and Wei, Zhongming and Ning, Enhao and Yan, Su and Li, Weijun and Tan, Ping-Heng and Ning, Xin},
-  journal = {arXiv preprint},
-  year    = {2026}
+  journal = {arXiv preprint arXiv:2607.07169},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2607.07169}
 }
 ```
 
