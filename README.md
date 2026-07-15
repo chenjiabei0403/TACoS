@@ -85,15 +85,19 @@ Configs expect scribble data **outside** the repo (see `.gitignore`). Paths in Y
 
 ### Data availability
 
-This repository ships **training code and configs only**. Images and scribble annotations are **not** included.
+This repository ships **training code and configs only**. Images and scribble annotations are **not** included here.
 
-As described in the TACoS paper (§4.1), scribbles follow the [Scribbles for All](https://arxiv.org/abs/2408.12489) paradigm. To try the code now, you can:
+As described in the TACoS paper (§4.1), scribbles follow the [Scribbles for All](https://arxiv.org/abs/2408.12489) paradigm. The exact scribble splits used in our experiments (and the microscopy-adapted **SCRIBE** protocol) are released with the companion **SCRIBE** / **SCRIBE-Bench** resources:
 
-1. Obtain original microscopic images and dense masks from [Yan et al.](https://doi.org/10.1038/s41699-025-00720-3) and [Uslu et al.](https://doi.org/10.1088/2632-2153/ad4e8a) (subject to their licenses).
-2. Generate scribbles with the public [Scribbles for All](https://github.com/wbkit/Scribbles4All) pipeline.
-3. Arrange files into the directory layout below and point the YAML paths accordingly.
+| Resource | Contents | Link |
+|----------|----------|------|
+| **[SCRIBE](https://github.com/chenjiabei0403/SCRIBE)** | Scribble protocol, benchmark utilities, and dataset documentation | [github.com/chenjiabei0403/SCRIBE](https://github.com/chenjiabei0403/SCRIBE) |
+| **Zenodo** | Packaged image / scribble / full-mask archives | [DOI: 10.5281/zenodo.21367189](https://doi.org/10.5281/zenodo.21367189) · [upload](https://zenodo.org/uploads/21367189) |
 
-The exact scribble splits used in our TACoS experiments were produced by a microscopy-adapted **SCRIBE** protocol and will be released **only after** the companion **SCRIBE-Bench** paper is accepted (together with download links / archival DOI). Until then we do not distribute those SCRIBE-generated scribbles. This README will be updated when they become public.
+To prepare data for training:
+
+1. Download the packaged datasets from [Zenodo (10.5281/zenodo.21367189)](https://doi.org/10.5281/zenodo.21367189), **or** obtain original microscopic images and dense masks from [Yan et al.](https://doi.org/10.1038/s41699-025-00720-3) and [Uslu et al.](https://doi.org/10.1088/2632-2153/ad4e8a) (subject to their licenses) and generate scribbles via [SCRIBE](https://github.com/chenjiabei0403/SCRIBE) / [Scribbles for All](https://github.com/wbkit/Scribbles4All).
+2. Arrange files into the directory layout below and point the YAML paths accordingly.
 
 ### Directory layout
 
@@ -267,7 +271,7 @@ This repository implements TACoS as described in the paper. Module-level inspira
 
 ### Dataset credits
 
-Microscopic images and dense masks from [Yan et al.](https://doi.org/10.1038/s41699-025-00720-3) and [Uslu et al.](https://doi.org/10.1088/2632-2153/ad4e8a). Please cite the original dataset papers when using the data.
+Microscopic images and dense masks from [Yan et al.](https://doi.org/10.1038/s41699-025-00720-3) and [Uslu et al.](https://doi.org/10.1088/2632-2153/ad4e8a). Scribble splits and protocol: [SCRIBE](https://github.com/chenjiabei0403/SCRIBE), archived at [Zenodo](https://doi.org/10.5281/zenodo.21367189). Please cite the original dataset papers when using the data.
 
 ### Funding
 
