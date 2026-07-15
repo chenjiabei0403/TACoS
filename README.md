@@ -85,19 +85,15 @@ Configs expect scribble data **outside** the repo (see `.gitignore`). Paths in Y
 
 ### Data availability
 
-This repository ships **training code and configs only**. Images and scribble annotations are **not** included here.
+This repository ships **training code and configs only**.
 
-As described in the TACoS paper (§4.1), scribbles follow the [Scribbles for All](https://arxiv.org/abs/2408.12489) paradigm. The exact scribble splits used in our experiments (and the microscopy-adapted **SCRIBE** protocol) are released with the companion **SCRIBE** / **SCRIBE-Bench** resources:
-
-| Resource | Contents | Link |
+| Resource | Provides | Link |
 |----------|----------|------|
-| **[SCRIBE](https://github.com/chenjiabei0403/SCRIBE)** | Scribble protocol, benchmark utilities, and dataset documentation | [github.com/chenjiabei0403/SCRIBE](https://github.com/chenjiabei0403/SCRIBE) |
-| **Zenodo** | Packaged image / scribble / full-mask archives | [DOI: 10.5281/zenodo.21367189](https://doi.org/10.5281/zenodo.21367189) · [upload](https://zenodo.org/uploads/21367189) |
+| **[SCRIBE](https://github.com/chenjiabei0403/SCRIBE)** | Scribble generation protocol | https://github.com/chenjiabei0403/SCRIBE |
+| **Zenodo** | Official scribbles (`masks/train/`) + train/val splits | [10.5281/zenodo.21367189](https://doi.org/10.5281/zenodo.21367189) |
+| **Yan / Uslu** | Optical images + dense masks (not redistributed) | [Yan](https://doi.org/10.1038/s41699-025-00720-3), [Uslu](https://doi.org/10.1088/2632-2153/ad4e8a) |
 
-To prepare data for training:
-
-1. Download the packaged datasets from [Zenodo (10.5281/zenodo.21367189)](https://doi.org/10.5281/zenodo.21367189), **or** obtain original microscopic images and dense masks from [Yan et al.](https://doi.org/10.1038/s41699-025-00720-3) and [Uslu et al.](https://doi.org/10.1088/2632-2153/ad4e8a) (subject to their licenses) and generate scribbles via [SCRIBE](https://github.com/chenjiabei0403/SCRIBE) / [Scribbles for All](https://github.com/wbkit/Scribbles4All).
-2. Arrange files into the directory layout below and point the YAML paths accordingly.
+Combine Zenodo scribbles/splits with the original image and dense-mask libraries, then arrange files as below. See [SCRIBE](https://github.com/chenjiabei0403/SCRIBE) and the Zenodo package layout for details.
 
 ### Directory layout
 
@@ -105,19 +101,16 @@ To prepare data for training:
 scribbles/
 ├── yan/
 │   ├── graphene/
-│   │   ├── images/train/          # {id}.jpg
-│   │   ├── images/val/
-│   │   ├── masks/train/           # {id}_scribble.png  (0=BG, 1=FG, 255=unknown)
-│   │   ├── masks/val/             # {id}.png  (dense GT for evaluation)
-│   │   └── masks_full/train/      # {id}.png  (dense GT for L_Boundary only)
+│   │   ├── images/{train,val}/    # from Yan / Uslu (not in Zenodo)
+│   │   ├── masks/train/           # Zenodo: SCRIBE scribbles (0/1/255)
+│   │   ├── masks/val/             # from original dense GT
+│   │   ├── masks_full/train/      # from original dense GT (for L_Boundary only)
+│   │   └── splits/                # Zenodo: train.txt / val.txt
 │   └── MoS2/
-│       └── ...
 └── uslu/
     ├── graphene/
     └── WSe2/
 ```
-
-Training uses sparse scribble masks; dense full masks in `masks_full/train/` are used only for the boundary branch of ARCL.
 
 ### Provided configs
 
@@ -271,7 +264,7 @@ This repository implements TACoS as described in the paper. Module-level inspira
 
 ### Dataset credits
 
-Microscopic images and dense masks from [Yan et al.](https://doi.org/10.1038/s41699-025-00720-3) and [Uslu et al.](https://doi.org/10.1088/2632-2153/ad4e8a). Scribble splits and protocol: [SCRIBE](https://github.com/chenjiabei0403/SCRIBE), archived at [Zenodo](https://doi.org/10.5281/zenodo.21367189). Please cite the original dataset papers when using the data.
+Images and dense masks from [Yan et al.](https://doi.org/10.1038/s41699-025-00720-3) and [Uslu et al.](https://doi.org/10.1088/2632-2153/ad4e8a). SCRIBE protocol: [SCRIBE](https://github.com/chenjiabei0403/SCRIBE); official scribbles and splits: [Zenodo](https://doi.org/10.5281/zenodo.21367189). Please cite the original dataset papers when using the data.
 
 ### Funding
 
